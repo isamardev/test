@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enhanced Button Counter</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 20px;
+      background: linear-gradient(to right, #f9f9f9, #e9ecef);
+      min-height: 100vh;
+    }
+
+    .button-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 16px 36px;
+      font-size: 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+      transform: scale(1);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.25);
+    }
+
+    button:active {
+      transform: scale(0.97);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .green-btn {
+      background: linear-gradient(145deg, #28a745, #218838);
+    }
+
+    .red-btn {
+      background: linear-gradient(145deg, #dc3545, #c82333);
+    }
+
+    .counter {
+      font-size: 20px;
+      color: #333;
+      margin: 10px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="button-container">
+    <button class="green-btn" onclick="countClick('green')">Green</button>
+    <button class="red-btn" onclick="countClick('red')">Red</button>
+  </div>
+
+  <div class="counter" id="green-count">Green clicked: 0 times</div>
+  <div class="counter" id="red-count">Red clicked: 0 times</div>
+
+  <script>
+    let greenCount = 0;
+    let redCount = 0;
+
+    function countClick(color) {
+      // Mobile Vibration
+      if (navigator.vibrate) {
+        navigator.vibrate([100, 50, 100]); // heavy buzz: vibrate, pause, vibrate
+      }
+
+      if (color === 'green') {
+        greenCount++;
+        document.getElementById('green-count').textContent = `Green clicked: ${greenCount} times`;
+      } else if (color === 'red') {
+        redCount++;
+        document.getElementById('red-count').textContent = `Red clicked: ${redCount} times`;
+      }
+    }
+  </script>
+
+</body>
+</html>
